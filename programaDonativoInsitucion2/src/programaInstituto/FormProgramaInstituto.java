@@ -1,4 +1,4 @@
-package programaInstitucion;
+package programaInstituto;
 
 import java.awt.EventQueue;
 
@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-public class FormProgramaInstitucion extends JFrame implements ActionListener {
+public class FormProgramaInstituto extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JLabel lblTitulo;
@@ -39,7 +39,7 @@ public class FormProgramaInstitucion extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormProgramaInstitucion frame = new FormProgramaInstitucion();
+					FormProgramaInstituto frame = new FormProgramaInstituto();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class FormProgramaInstitucion extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public FormProgramaInstitucion() {
+	public FormProgramaInstituto() {
 		setTitle("Programa de Donaciones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
@@ -117,27 +117,27 @@ public class FormProgramaInstitucion extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnDonar(ActionEvent e) {
 		//Declaration variable
-		double hospital, comedor, guarderia, escuela, asilo, donacion;
+		double centroSalud, postaMedica, escuela, comedor, asiloAncianos, donacion;
 		
 		//Parsing values
 		DecimalFormat formato = new DecimalFormat("#.##");
 		donacion = Double.parseDouble(txtDonacion.getText());
 		
 		//Process
-		hospital = 0.25 * donacion;
-		guarderia = 0.15 * donacion;
-		escuela = 0.65 * (hospital + guarderia);
-		comedor = 0.45 * escuela;
-		asilo = donacion - (hospital + guarderia + escuela + comedor);
+		centroSalud = 0.25 * donacion;
+		escuela = 0.35 * donacion;
+		comedor = 0.28 * (escuela + centroSalud);
+		postaMedica = 0.40 * comedor;
+		asiloAncianos = donacion - (centroSalud + escuela + comedor + postaMedica);
 		
 		//Output
 		txtSDonacion.setText("¿Cómo vamos a repartir nuestros donativos? \n");
 		txtSDonacion.append("De la siguiente manera: \n\n");
-		txtSDonacion.append("Hospital:\n" + formato.format(hospital) + "\n\n");
-		txtSDonacion.append("Comedor:\n" + formato.format(comedor) + "\n\n");
-		txtSDonacion.append("Guardería:\n" + formato.format(guarderia) + "\n\n");
+		txtSDonacion.append("Centro de Salud:\n" + formato.format(centroSalud) + "\n\n");
+		txtSDonacion.append("Posta Médica:\n" + formato.format(postaMedica) + "\n\n");
 		txtSDonacion.append("Escuela:\n" + formato.format(escuela) + "\n\n");
-		txtSDonacion.append("Asilo:\n" + formato.format(asilo));
+		txtSDonacion.append("Comedor:\n" + formato.format(comedor) + "\n\n");
+		txtSDonacion.append("Asilo de ancianos:\n" + formato.format(asiloAncianos));
 	}
 	protected void actionPerformedBtnLimpiar(ActionEvent e) {
 		txtDonacion.setText("");
