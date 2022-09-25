@@ -139,8 +139,8 @@ public class Empresa extends JFrame implements ActionListener {
 		utilidadAnual = Double.parseDouble(txtUtilidadAnual.getText());
 		
 		txtS.setText("DATOS INGRESADOS\n");
-		txtS.append("RazÃ³n social:	" + razonSocial + "\n");
-		txtS.append("NÃºmero de empleados:	" + numeroEmpleados + "\n");
-		txtS.append("Utilidad anual:	" + utilidadAnual + "\n");
+		txtS.append("Razón social		: " + razonSocial + "\n");
+		txtS.append("Número de empleados	: " + numeroEmpleados + "\n");
+		txtS.append("Utilidad anual		: " + utilidadAnual + "\n");
 	}
 }

@@ -139,8 +139,8 @@ public class Persona extends JFrame implements ActionListener {
 		pesoKilogramos = Double.parseDouble(txtPesoKilogramos.getText());
 		
 		txtS.setText("DATOS INGRESADOS\n");
-		txtS.append("Nombres y apellidos:	" + nombresApellidos + "\n");
-		txtS.append("Año de Nacimiento:	" + anioNacimiento + "\n");
-		txtS.append("Peso en Kilogramos:	" + pesoKilogramos + "\n");
+		txtS.append("Nombres y apellidos	: " + nombresApellidos + "\n");
+		txtS.append("Año de Nacimiento	: " + anioNacimiento + "\n");
+		txtS.append("Peso en Kilogramos	: " + pesoKilogramos + "KG");
 	}
 }

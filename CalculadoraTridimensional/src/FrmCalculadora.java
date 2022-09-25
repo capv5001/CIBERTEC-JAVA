@@ -228,7 +228,7 @@ public class FrmCalculadora extends JFrame implements ActionListener {
 		//Process
 		areaLateral = 2 * 3.1416 * radio * altura;
 		areaBase = 3.1416 * (radio * radio);
-		areaTotal = 2 * (areaBase + areaLateral);
+		areaTotal = (2 * areaBase) + areaLateral;
 		
 		//Output
 		txtSCilindro.setText("Especificaciones Cilindro \n\n");
