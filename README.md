@@ -20,4 +20,4 @@ Se han creado los aplicativos:
 * programaDonativoInstitucion2
 * CalculadoraTridimensional
 
-**Importante:** *CalculadoraTridimensional* es un conjunto de 3 ejercicios en uno a manera de entender por cuenta propia si puedo controlar de manera indistintas los campos de entrada y salida.
+**Importante:** *CalculadoraTridimensional* es un conjunto de 3 ejercicios en uno, a manera de entender por cuenta propia si puedo controlar de manera indistinta los campos de entrada y salida.
