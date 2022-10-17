@@ -61,29 +61,21 @@ public class FrmConfigurarPorcentajesDescuento extends JDialog {
 		contentPanel.add(lblUnidades1);
 		
 		txtPrecio = new JTextField();
-		txtPrecio.setEnabled(false);
-		txtPrecio.setEditable(false);
 		txtPrecio.setBounds(133, 18, 140, 20);
 		contentPanel.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
 		txtAncho = new JTextField();
-		txtAncho.setEnabled(false);
-		txtAncho.setEditable(false);
 		txtAncho.setColumns(10);
 		txtAncho.setBounds(133, 49, 140, 20);
 		contentPanel.add(txtAncho);
 		
 		txtAlto = new JTextField();
-		txtAlto.setEnabled(false);
-		txtAlto.setEditable(false);
 		txtAlto.setColumns(10);
 		txtAlto.setBounds(133, 80, 140, 20);
 		contentPanel.add(txtAlto);
 		
 		txtFondo = new JTextField();
-		txtFondo.setEnabled(false);
-		txtFondo.setEditable(false);
 		txtFondo.setColumns(10);
 		txtFondo.setBounds(133, 111, 140, 20);
 		contentPanel.add(txtFondo);
