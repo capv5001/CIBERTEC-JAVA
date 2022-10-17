@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class FrmConsultarCocina extends JDialog {
+public class FrmModificarCocina extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JLabel lblModelo;
@@ -28,15 +28,13 @@ public class FrmConsultarCocina extends JDialog {
 	private JTextField txtFondo;
 	private JTextField txtQuemadores;
 	private JButton btnCerrar;
-	
-	private Tienda cocina = new Tienda();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			FrmConsultarCocina dialog = new FrmConsultarCocina();
+			FrmModificarCocina dialog = new FrmModificarCocina();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -47,9 +45,9 @@ public class FrmConsultarCocina extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public FrmConsultarCocina() {
+	public FrmModificarCocina() {
 	    setTitle("Consultar Cocina");
-		setBounds(100, 100, 442, 300);
+		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -59,7 +57,7 @@ public class FrmConsultarCocina extends JDialog {
 		lblModelo.setBounds(10, 25, 76, 14);
 		contentPanel.add(lblModelo);
 		
-		
+		Tienda cocina = new Tienda();
 		
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {cocina.modelo0, cocina.modelo1, cocina.modelo2, cocina.modelo3, cocina.modelo4}));
@@ -87,36 +85,26 @@ public class FrmConsultarCocina extends JDialog {
 		contentPanel.add(lblModelo_5);
 		
 		txtPrecio = new JTextField();
-		txtPrecio.setEnabled(false);
-		txtPrecio.setEditable(false);
 		txtPrecio.setBounds(96, 61, 177, 20);
 		contentPanel.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
 		txtAncho = new JTextField();
-		txtAncho.setEnabled(false);
-		txtAncho.setEditable(false);
 		txtAncho.setColumns(10);
 		txtAncho.setBounds(96, 100, 177, 20);
 		contentPanel.add(txtAncho);
 		
 		txtAlto = new JTextField();
-		txtAlto.setEnabled(false);
-		txtAlto.setEditable(false);
 		txtAlto.setColumns(10);
 		txtAlto.setBounds(96, 139, 177, 20);
 		contentPanel.add(txtAlto);
 		
 		txtFondo = new JTextField();
-		txtFondo.setEnabled(false);
-		txtFondo.setEditable(false);
 		txtFondo.setColumns(10);
 		txtFondo.setBounds(96, 178, 177, 20);
 		contentPanel.add(txtFondo);
 		
 		txtQuemadores = new JTextField();
-		txtQuemadores.setEnabled(false);
-		txtQuemadores.setEditable(false);
 		txtQuemadores.setColumns(10);
 		txtQuemadores.setBounds(96, 217, 177, 20);
 		contentPanel.add(txtQuemadores);

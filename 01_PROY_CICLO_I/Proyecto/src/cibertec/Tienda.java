@@ -188,5 +188,6 @@ public class Tienda extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedMntmSalir(ActionEvent e) {
 		//Create function to exit
+	    
 	}
 }
