@@ -7,16 +7,21 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import javax.swing.JButton;
 
 public class Tienda extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	
+	//DecimalFormat
+	DecimalFormat df = new DecimalFormat("0.0");
 	
 	// Datos mínimos de la primera cocina
 	public static String modelo0 = "Mabe EMP6120PG0";
@@ -91,6 +96,7 @@ public class Tienda extends JFrame implements ActionListener {
 	private JMenuItem mntmConfigurarCantidadptima;
 	private JMenuItem mntmConfigurarCuotaDiaria;
 	private JMenuItem mntmAcercaDeTienda;
+	private JButton btnNewButton;
 	
 	/**
 	 * Launch the application.
@@ -137,50 +143,98 @@ public class Tienda extends JFrame implements ActionListener {
 		menuBar.add(mnMantenimiento);
 		
 		mntmConsultarCocina = new JMenuItem("Consultar Cocina");
+		mntmConsultarCocina.addActionListener(this);
 		mnMantenimiento.add(mntmConsultarCocina);
 		
 		mntmModificarCocina = new JMenuItem("Modificar Cocina");
+		mntmModificarCocina.addActionListener(this);
 		mnMantenimiento.add(mntmModificarCocina);
 		
 		mntmListarCocinas = new JMenuItem("Listar Cocinas");
+		mntmListarCocinas.addActionListener(this);
 		mnMantenimiento.add(mntmListarCocinas);
 		
 		mnVentas = new JMenu("Ventas");
 		menuBar.add(mnVentas);
 		
 		mntmVender = new JMenuItem("Vender");
+		mntmVender.addActionListener(this);
 		mnVentas.add(mntmVender);
 		
 		mntmGenerarReportes = new JMenuItem("Generar Reportes");
+		mntmGenerarReportes.addActionListener(this);
 		mnVentas.add(mntmGenerarReportes);
 		
 		mnConfiguracion = new JMenu("Configuración");
 		menuBar.add(mnConfiguracion);
 		
 		mntmConfigurarDescuentos = new JMenuItem("Configurar Descuentos");
+		mntmConfigurarDescuentos.addActionListener(this);
 		mnConfiguracion.add(mntmConfigurarDescuentos);
 		
 		mntmConfigurarObsequios = new JMenuItem("Configurar Obsequios");
+		mntmConfigurarObsequios.addActionListener(this);
 		mnConfiguracion.add(mntmConfigurarObsequios);
 		
 		mntmConfigurarCantidadptima = new JMenuItem("Configurar Cantidad Óptima");
+		mntmConfigurarCantidadptima.addActionListener(this);
 		mnConfiguracion.add(mntmConfigurarCantidadptima);
 		
 		mntmConfigurarCuotaDiaria = new JMenuItem("Configurar Cuota Diaria");
+		mntmConfigurarCuotaDiaria.addActionListener(this);
 		mnConfiguracion.add(mntmConfigurarCuotaDiaria);
 		
 		mnAyuda = new JMenu("Ayuda");
 		menuBar.add(mnAyuda);
 		
 		mntmAcercaDeTienda = new JMenuItem("Acerca de Tienda");
+		mntmAcercaDeTienda.addActionListener(this);
 		mnAyuda.add(mntmAcercaDeTienda);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		btnNewButton = new JButton("Botón de prueba");
+		btnNewButton.addActionListener(this);
+		btnNewButton.setBounds(250, 122, 162, 23);
+		contentPane.add(btnNewButton);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+	    if (e.getSource() == btnNewButton) {
+	        actionPerformedBtnNewButton(e);
+	    }
+	    if (e.getSource() == mntmAcercaDeTienda) {
+	        actionPerformedMntmAcercaDeTienda(e);
+	    }
+	    if (e.getSource() == mntmConfigurarCuotaDiaria) {
+	        actionPerformedMntmConfigurarCuotaDiaria(e);
+	    }
+	    if (e.getSource() == mntmConfigurarCantidadptima) {
+	        actionPerformedMntmConfigurarCantidadptima(e);
+	    }
+	    if (e.getSource() == mntmConfigurarObsequios) {
+	        actionPerformedMntmConfigurarObsequios(e);
+	    }
+	    if (e.getSource() == mntmConfigurarDescuentos) {
+	        actionPerformedMntmConfigurarDescuentos(e);
+	    }
+	    if (e.getSource() == mntmGenerarReportes) {
+	        actionPerformedMntmGenerarReportes(e);
+	    }
+	    if (e.getSource() == mntmVender) {
+	        actionPerformedMntmVender(e);
+	    }
+	    if (e.getSource() == mntmListarCocinas) {
+	        actionPerformedMntmListarCocinas(e);
+	    }
+	    if (e.getSource() == mntmModificarCocina) {
+	        actionPerformedMntmModificarCocina(e);
+	    }
+	    if (e.getSource() == mntmConsultarCocina) {
+	        actionPerformedMntmConsultarCocina(e);
+	    }
 		if (e.getSource() == mntmSalir) {
 			actionPerformedMntmSalir(e);
 		}
@@ -188,6 +242,53 @@ public class Tienda extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedMntmSalir(ActionEvent e) {
 		//Create function to exit
-	    
+	    System.exit(0);
 	}
+    protected void actionPerformedMntmConsultarCocina(ActionEvent e) {
+        FrmConsultarCocina consultaCocina = new FrmConsultarCocina();
+        consultaCocina.setVisible(true);
+    }
+    protected void actionPerformedMntmModificarCocina(ActionEvent e) {
+        FrmModificarCocina modificarCocina = new FrmModificarCocina();
+        modificarCocina.setVisible(true);
+    }
+    protected void actionPerformedMntmListarCocinas(ActionEvent e) {
+        FrmListadoCocinas listarCocina = new FrmListadoCocinas();
+        listarCocina.setVisible(true);
+    }
+    protected void actionPerformedMntmVender(ActionEvent e) {
+        FrmVender vender = new FrmVender();
+        vender.setVisible(true);
+    }
+    protected void actionPerformedMntmGenerarReportes(ActionEvent e) {
+        FrmListadoCocinas listarCocina = new FrmListadoCocinas();
+        listarCocina.setVisible(true);
+    }
+    protected void actionPerformedMntmConfigurarDescuentos(ActionEvent e) {
+        FrmConfigurarPorcentajesDescuento configurarDescuento = new FrmConfigurarPorcentajesDescuento();
+        configurarDescuento.setVisible(true);
+    }
+    protected void actionPerformedMntmConfigurarObsequios(ActionEvent e) {
+        FrmConfigurarObsequios configurarObsequio = new FrmConfigurarObsequios();
+        configurarObsequio.setVisible(true);
+    }
+    protected void actionPerformedMntmConfigurarCantidadptima(ActionEvent e) {
+        FrmConfigurarCantidadOptima configurarCantidadOptima = new FrmConfigurarCantidadOptima();
+        configurarCantidadOptima.setVisible(true);
+    }
+    protected void actionPerformedMntmConfigurarCuotaDiaria(ActionEvent e) {
+        FrmConfigurarCuotaDiaria configurarCuotaDiaria = new FrmConfigurarCuotaDiaria();
+        configurarCuotaDiaria.setVisible(true);
+    }
+    protected void actionPerformedMntmAcercaDeTienda(ActionEvent e) {
+    }
+    protected void actionPerformedBtnNewButton(ActionEvent e) {
+        System.out.println(modelo1);
+        System.out.println(precio1);
+        System.out.println(alto1);
+        System.out.println(ancho1);
+        System.out.println(fondo1);
+        System.out.println(quemadores1);
+        
+    }
 }

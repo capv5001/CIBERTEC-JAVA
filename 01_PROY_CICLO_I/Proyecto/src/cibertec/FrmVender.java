@@ -14,21 +14,28 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
-public class FrmVender extends JDialog {
+public class FrmVender extends JDialog implements ActionListener, ItemListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnCerrar;
 	private JButton btnVender;
-	private JComboBox comboBox;
+	private JComboBox cboModelo;
 	private JLabel lblModelo;
 	private JLabel lblPrecio;
 	private JLabel lblCantidad;
-	private JTextField txtField;
-	private JTextField txtField_1;
+	private JTextField txtPrecio;
+	private JTextField txtCantidad;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
-
+	DecimalFormat df = new DecimalFormat();
+    Tienda cocina = new Tienda();
+    
 	/**
 	 * Launch the application.
 	 */
@@ -54,19 +61,20 @@ public class FrmVender extends JDialog {
 		contentPanel.setLayout(null);
 		
 		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
 		btnCerrar.setBounds(326, 34, 98, 23);
 		contentPanel.add(btnCerrar);
 		
 		btnVender = new JButton("Vender");
+		btnVender.addActionListener(this);
 		btnVender.setBounds(326, 9, 98, 23);
 		contentPanel.add(btnVender);
-		
-		Tienda cocina = new Tienda();
 
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {cocina.modelo0, cocina.modelo1, cocina.modelo2, cocina.modelo3, cocina.modelo4}));
-		comboBox.setBounds(96, 11, 177, 18);
-		contentPanel.add(comboBox);
+		cboModelo = new JComboBox();
+		cboModelo.addItemListener(this);
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {cocina.modelo0, cocina.modelo1, cocina.modelo2, cocina.modelo3, cocina.modelo4}));
+		cboModelo.setBounds(96, 11, 177, 18);
+		contentPanel.add(cboModelo);
 		
 		lblModelo = new JLabel("Modelo");
 		lblModelo.setBounds(10, 13, 76, 14);
@@ -80,17 +88,17 @@ public class FrmVender extends JDialog {
 		lblCantidad.setBounds(10, 63, 76, 14);
 		contentPanel.add(lblCantidad);
 		
-		txtField = new JTextField();
-		txtField.setEditable(false);
-		txtField.setEnabled(false);
-		txtField.setBounds(96, 35, 177, 20);
-		contentPanel.add(txtField);
-		txtField.setColumns(10);
+		txtPrecio = new JTextField();
+		txtPrecio.setText("" + cocina.precio0);
+		txtPrecio.setEditable(false);
+		txtPrecio.setBounds(96, 35, 177, 20);
+		contentPanel.add(txtPrecio);
+		txtPrecio.setColumns(10);
 		
-		txtField_1 = new JTextField();
-		txtField_1.setColumns(10);
-		txtField_1.setBounds(96, 60, 177, 20);
-		contentPanel.add(txtField_1);
+		txtCantidad = new JTextField();
+		txtCantidad.setColumns(10);
+		txtCantidad.setBounds(96, 60, 177, 20);
+		contentPanel.add(txtCantidad);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -101,4 +109,52 @@ public class FrmVender extends JDialog {
 		txtS = new JTextArea();
 		scrollPane.setViewportView(txtS);
 	}
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnVender) {
+            actionPerformedBtnVender(e);
+        }
+        if (e.getSource() == btnCerrar) {
+            actionPerformedBtnCerrar(e);
+        }
+    }
+    protected void actionPerformedBtnVender(ActionEvent e) {
+        txtS.setText("BOLETA DE VENTA\n\n");
+        
+        // Model
+        txtS.append("Modelo\t\t: " + cocina.modelo0 + "\n");
+        txtS.append("Precio\t\t: S/." + cocina.df.format(cocina.precio0) + "\n");
+        txtS.append("Cantidad\t\t: " + cocina.df.format(cocina.fondo0) + " cm\n");
+        txtS.append("Importe compra\t\t: " + cocina.df.format(cocina.ancho0) + " cm\n");
+        txtS.append("Importe descuento\t: " + cocina.df.format(cocina.alto0) + " cm\n");
+        txtS.append("Importe pagar\t\t: " + cocina.df.format(cocina.alto0) + " cm\n");
+        txtS.append("Obsequio\t\t: " + cocina.quemadores0 + "\n\n");
+
+    }
+    
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getSource() == cboModelo) {
+            itemStateChangedCboModelo(e);
+        }
+    }
+    protected void itemStateChangedCboModelo(ItemEvent e) {
+        
+        int idxModelo = cboModelo.getSelectedIndex();
+        
+        if(idxModelo == 0) {
+            txtPrecio.setText("" + cocina.precio0);
+        }else if(idxModelo == 1) {
+            txtPrecio.setText("" + cocina.precio1);
+        }else if(idxModelo == 2) {
+            txtPrecio.setText("" + cocina.precio2);
+        }else if(idxModelo == 3) {
+            txtPrecio.setText("" + cocina.precio3);
+        }
+       
+        txtCantidad.setText("");
+        txtS.setText("");
+    }
+    protected void actionPerformedBtnCerrar(ActionEvent e) {
+        this.dispose();
+    }
+
 }
