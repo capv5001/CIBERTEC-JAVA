@@ -96,7 +96,6 @@ public class Tienda extends JFrame implements ActionListener {
 	private JMenuItem mntmConfigurarCantidadptima;
 	private JMenuItem mntmConfigurarCuotaDiaria;
 	private JMenuItem mntmAcercaDeTienda;
-	private JButton btnNewButton;
 	
 	/**
 	 * Launch the application.
@@ -194,17 +193,9 @@ public class Tienda extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		btnNewButton = new JButton("Botón de prueba");
-		btnNewButton.addActionListener(this);
-		btnNewButton.setBounds(250, 122, 162, 23);
-		contentPane.add(btnNewButton);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-	    if (e.getSource() == btnNewButton) {
-	        actionPerformedBtnNewButton(e);
-	    }
 	    if (e.getSource() == mntmAcercaDeTienda) {
 	        actionPerformedMntmAcercaDeTienda(e);
 	    }
@@ -281,14 +272,5 @@ public class Tienda extends JFrame implements ActionListener {
         configurarCuotaDiaria.setVisible(true);
     }
     protected void actionPerformedMntmAcercaDeTienda(ActionEvent e) {
-    }
-    protected void actionPerformedBtnNewButton(ActionEvent e) {
-        System.out.println(modelo1);
-        System.out.println(precio1);
-        System.out.println(alto1);
-        System.out.println(ancho1);
-        System.out.println(fondo1);
-        System.out.println(quemadores1);
-        
     }
 }

@@ -71,8 +71,6 @@ public class FrmConsultarCocina extends JDialog implements ActionListener, ItemL
 		lblModelo.setBounds(10, 25, 76, 14);
 		contentPanel.add(lblModelo);
 		
-		
-		
 		cboModelo = new JComboBox();
 		cboModelo.addItemListener(this);
 		cboModelo.setModel(new DefaultComboBoxModel(new String[] {cocina.modelo0, cocina.modelo1, cocina.modelo2, cocina.modelo3, cocina.modelo4}));
